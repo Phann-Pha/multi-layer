@@ -49,6 +49,6 @@ dependencies {
     // retrofit 2
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-    implementation("com.squareup.okhttp3:okhttp:4.11.0")
-    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation(libs.okhttp)
+    implementation(libs.converter.moshi)
 }
