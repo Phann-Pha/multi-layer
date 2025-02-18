@@ -1,6 +1,11 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -21,13 +26,23 @@ android {
     }
     
     buildTypes {
+        val properties = Properties().apply {
+            load(FileInputStream(File(rootProject.rootDir, "local.properties")))
+        }
+        
         debug {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("Boolean", "IS_PRODUCTION", "false")
+            buildConfigField("String", "URL_UAT", properties.getProperty("URL_UAT"))
+            buildConfigField("String", "URL_PRODUCTION", properties.getProperty("URL_PRODUCTION"))
         }
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("Boolean", "IS_PRODUCTION", "true")
+            buildConfigField("String", "URL_UAT", properties.getProperty("URL_UAT"))
+            buildConfigField("String", "URL_PRODUCTION", properties.getProperty("URL_PRODUCTION"))
         }
     }
     compileOptions {
@@ -39,6 +54,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true // build config (include local.properties...)
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -51,6 +67,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
     implementation(project(":domain"))
     
     implementation(libs.androidx.core.ktx)
@@ -70,5 +87,19 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     
     // for using motion layout
-    implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0")
+    implementation(libs.androidx.constraintlayout.compose)
+    
+    // retrofit 2
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp)
+    implementation(libs.converter.moshi)
+    
+    // dagger hilt
+    implementation (libs.hilt.android)
+    kapt (libs.hilt.compiler)
+}
+
+kapt {
+    correctErrorTypes = true // allow references to generated code
 }

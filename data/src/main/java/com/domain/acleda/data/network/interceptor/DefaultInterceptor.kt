@@ -1,4 +1,4 @@
-package com.domain.acleda.data.network.client
+package com.domain.acleda.data.network.interceptor
 
 import okhttp3.Interceptor
 import okhttp3.Request

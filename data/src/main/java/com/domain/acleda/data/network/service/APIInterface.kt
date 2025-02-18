@@ -7,6 +7,6 @@ import retrofit2.http.GET
 
 interface APIInterface
 {
-    @GET("")
+    @GET("fact")
     fun onGetUserInfo(): Single<Response<ResponseBody>>
 }
