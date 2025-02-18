@@ -6,10 +6,10 @@ import okhttp3.Response
 import retrofit2.Invocation
 
 /**
- * Can be used to intercept and modify HTTP requests or responses,
+ * @author pha
+ * Class can be used to intercept and modify HTTP requests or responses,
  * so we can use it to modify our network request
  * before it gets executed.
- *
  * */
 
 class DefaultInterceptor(private val authKey: String = "", private val authValue: String = "") : Interceptor
