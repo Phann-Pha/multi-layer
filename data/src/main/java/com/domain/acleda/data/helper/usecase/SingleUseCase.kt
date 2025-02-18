@@ -1,4 +1,4 @@
-package com.domain.acleda.data.common.helper
+package com.domain.acleda.data.helper.usecase
 
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable

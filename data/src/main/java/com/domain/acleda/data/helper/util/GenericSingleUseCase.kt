@@ -1,6 +1,6 @@
-package com.domain.acleda.data.common.service
+package com.domain.acleda.data.helper.util
 
-import com.domain.acleda.data.common.helper.BuildSingleUseCase
+import com.domain.acleda.data.helper.usecase.BuildSingleUseCase
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 

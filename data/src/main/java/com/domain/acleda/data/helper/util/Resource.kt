@@ -1,4 +1,4 @@
-package com.domain.acleda.data.common.service
+package com.domain.acleda.data.helper.util
 
 sealed class Resource<T>(
     val data: T? = null,

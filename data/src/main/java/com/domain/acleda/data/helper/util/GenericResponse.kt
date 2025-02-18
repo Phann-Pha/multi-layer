@@ -1,4 +1,4 @@
-package com.domain.acleda.data.common.service
+package com.domain.acleda.data.helper.util
 
 import retrofit2.Response
 import kotlin.coroutines.resume
@@ -13,7 +13,7 @@ class GenericResponse<T>(private val genericSingleUseCase: GenericSingleUseCase<
             {
                 genericSingleUseCase.execute(
                     success = { response ->
-                        continuation.resume(Resource.Success(data = response.body(), statusCode = response.code().toString(), message = response.message(), rawUrl = response.raw().request().url().toString()))
+                        continuation.resume(Resource.Success(data = response.body(), statusCode = response.code().toString(), message = response.message(), rawUrl = response.raw().request.url.toString()))
                     },
                     error = { throwable ->
                         continuation.resume(Resource.Error(message = throwable.message, throwable = throwable))
@@ -34,7 +34,7 @@ class GenericResponse<T>(private val genericSingleUseCase: GenericSingleUseCase<
             {
                 genericSingleUseCase.execute(
                     success = { response ->
-                        continuation.resume(Resource.Success(data = response, statusCode = response.code().toString(), message = response.message(), rawUrl = response.raw().request().url().toString()))
+                        continuation.resume(Resource.Success(data = response, statusCode = response.code().toString(), message = response.message(), rawUrl = response.raw().request.url.toString()))
                     },
                     error = { throwable ->
                         continuation.resume(Resource.Error(message = throwable.message, throwable = throwable))
