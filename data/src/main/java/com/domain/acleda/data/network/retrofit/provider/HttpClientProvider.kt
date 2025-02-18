@@ -19,8 +19,8 @@ class HttpClientProvider
 {
     @Provides
     fun onOkHttpClientProvider(): OkHttpClient = OkHttpClient().newBuilder()
-        .readTimeout(60L, TimeUnit.SECONDS)
-        .connectTimeout(60L, TimeUnit.SECONDS)
+        .readTimeout(20, TimeUnit.SECONDS)
+        .connectTimeout(20, TimeUnit.SECONDS)
         .addInterceptor(DefaultInterceptor())
         .build()
 }
