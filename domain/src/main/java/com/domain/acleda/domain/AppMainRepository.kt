@@ -10,7 +10,7 @@ import okhttp3.ResponseBody
 import javax.inject.Inject
 import javax.inject.Named
 
-class AppMainRepository @Inject constructor(@Named("portABC") private val api: APIInterface) : AppMainService
+class AppMainRepository @Inject constructor(@Named("port") private val api: APIInterface) : AppMainService
 {
     override fun onTestNetwork(): Flow<Resource<ResponseBody>> = flow {
         try

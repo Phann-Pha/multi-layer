@@ -18,7 +18,8 @@ import javax.inject.Named
 /** @author pha
  *  Class used for provide retrofit builder
  *  This class we create for provide all retrofit builder that have different baseUrl
- *  @param clientProvider used for provide OkHttpClient (note don't used private access modifier, when used @Inject
+ *  @property clientProvider used for provide OkHttpClient (note don't used private access modifier, when used @Inject)
+ *  @property area used for provide specific area url (note don't used private access modifier, when used @Inject)
  * */
 
 @Module
@@ -28,18 +29,18 @@ class RetrofitBuilder @Inject constructor()
     internal val clientProvider: HttpClientProvider
         @Inject get() = HttpClientProvider()
     
-    internal val url: RequestAreaURL
+    internal val area: RequestAreaURL
         @Inject get() = RequestAreaURL()
     
     @Provides
-    @Named("builder2")
-    fun onRetrofitBuilder2(): Retrofit = Retrofit.Builder().baseUrl(url.onGenerateBaseUrl())
+    @Named("builder")
+    fun onRetrofitBuilder2(): Retrofit = Retrofit.Builder().baseUrl(area.onGenerateBaseUrl())
         .addConverterFactory(MoshiConverterFactory.create().asLenient())
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .client(clientProvider.onOkHttpClientProvider())
         .build()
     
     @Provides
-    @Named("portABC")
-    fun onRetrofit(@Named("builder2") retrofit: Retrofit): APIInterface = retrofit.create(APIInterface::class.java)
+    @Named("port")
+    fun onRetrofit(@Named("builder") retrofit: Retrofit): APIInterface = retrofit.create(APIInterface::class.java)
 }

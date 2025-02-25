@@ -1,4 +1,4 @@
-package com.domain.acleda.kh.common
+package com.domain.acleda.kh.common.base
 
 interface BaseComponentService
 {

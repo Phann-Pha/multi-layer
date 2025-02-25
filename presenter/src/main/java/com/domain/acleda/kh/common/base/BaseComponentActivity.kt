@@ -1,4 +1,4 @@
-package com.domain.acleda.kh.common
+package com.domain.acleda.kh.common.base
 
 import android.app.Activity
 import android.os.Bundle
