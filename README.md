@@ -155,10 +155,4 @@ These diagrams help visualize the separation of concerns in your three-layer arc
 
 ---
 
-## Getting Started
-
-> _Instructions on how to set up, build, and run the project should go here, based on the actual dependencies and requirements of your codebase._
-
----
-
 If you have questions or would like to contribute, feel free to reach out!
