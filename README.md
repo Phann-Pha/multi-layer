@@ -1,6 +1,6 @@
 # Project Overview
 
-Hello guys, I'm Phann Pha. I have created this project to experiment with a modularized three-layer architecture:
+Hello guys, just test for splitting project layer architecture:
 
 1. **Data Layer**
 2. **Domain Layer**
